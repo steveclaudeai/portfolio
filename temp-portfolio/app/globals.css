@@ -42,7 +42,7 @@ body {
 .intro-stroke {
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
-  animation: strokeDraw 1.5s ease forwards;
+  animation: strokeDraw 0.8s ease forwards;
 }
 
 @keyframes strokeDraw {

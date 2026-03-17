@@ -104,7 +104,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
-        <div className="max-w-[55%] md:max-w-[50%]">
+        <div className="max-w-full md:max-w-[50%]">
           <motion.div {...fadeUp(0.3)} className="inline-flex items-center gap-2 bg-emerald/10 border border-emerald/20 rounded-full px-4 py-1.5 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald animate-blink" />
             <span className="text-emerald text-xs tracking-[3px] uppercase">Available for hire</span>
@@ -124,6 +124,12 @@ export default function Hero() {
             and automate businesses with <span className="text-emerald font-semibold">AI</span>.
           </motion.p>
 
+          <div className="block md:hidden mt-6 flex justify-center">
+            <div className="w-44 h-44 rounded-2xl overflow-hidden border border-slate-border mx-auto">
+              <img src="/images/steve.jpg" alt="Steve Rios" className="w-full h-full object-cover object-top" />
+            </div>
+          </div>
+
           <motion.div {...fadeUp(1.1)} className="flex gap-4 mt-10">
             <MagneticButton>
               <a href="#contact" className="group relative bg-emerald text-bg font-bold px-7 py-3.5 rounded-lg overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(16,185,129,0.3)] transition-all duration-200 inline-block">
@@ -138,7 +144,7 @@ export default function Hero() {
             </MagneticButton>
           </motion.div>
 
-          <motion.div {...fadeUp(1.3)} className="flex gap-10 mt-12 pt-8 border-t border-slate-border">
+          <motion.div {...fadeUp(1.3)} className="flex flex-wrap gap-6 sm:gap-10 mt-12 pt-8 border-t border-slate-border">
             {[
               { target: 50, suffix: '+', label: 'Projects done' },
               { target: 3, suffix: 'x', label: 'Services offered' },

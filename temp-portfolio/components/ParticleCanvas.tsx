@@ -24,7 +24,7 @@ export default function ParticleCanvas() {
 
     let W = 0, H = 0
     let animId: number
-    const PARTICLE_COUNT = 55
+    const PARTICLE_COUNT = 35
     const CONNECTION_DISTANCE = 120
     const particles: Particle[] = []
 
@@ -79,9 +79,16 @@ export default function ParticleCanvas() {
     }
     draw()
 
+    const onVisibilityChange = () => {
+      if (document.hidden) cancelAnimationFrame(animId)
+      else animId = requestAnimationFrame(draw)
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
     }
   }, [])
 

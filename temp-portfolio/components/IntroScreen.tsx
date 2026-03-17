@@ -19,7 +19,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
       sessionStorage.setItem('intro-seen', '1')
       document.body.style.overflow = ''
       onComplete()
-    }, 2500)
+    }, 1500)
 
     return () => {
       clearTimeout(timer)
@@ -33,7 +33,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
         <motion.div
           className="fixed inset-0 z-[100] bg-bg flex items-center justify-center"
           exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
           <svg
             viewBox="0 0 200 80"
@@ -59,7 +59,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
               strokeLinecap="round"
               strokeLinejoin="round"
               className="intro-stroke"
-              style={{ animationDelay: '0.3s' }}
+              style={{ animationDelay: '0.15s' }}
             />
             {/* dot */}
             <circle
@@ -70,7 +70,7 @@ export default function IntroScreen({ onComplete }: { onComplete: () => void }) 
               stroke="#10b981"
               strokeWidth="3"
               className="intro-stroke"
-              style={{ animationDelay: '0.8s' }}
+              style={{ animationDelay: '0.4s' }}
             />
           </svg>
         </motion.div>

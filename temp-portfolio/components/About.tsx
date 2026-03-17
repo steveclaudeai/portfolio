@@ -45,7 +45,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[180px]">
 
           {/* Photo - 2 cols, 2 rows */}
-          <TextReveal delay={0.1} className="md:col-span-2 md:row-span-2">
+          <TextReveal delay={0.1} className="md:col-span-2 md:row-span-2 min-h-[280px]">
             <TiltCard className="w-full h-full bg-bg border border-slate-border rounded-2xl overflow-hidden">
               <HalftonePhoto
                 src="/images/steve.jpg"
@@ -54,6 +54,7 @@ export default function About() {
                 dotGap={4}
                 maxDotSize={1.6}
                 pulseInterval={5000}
+                anchorY={0.15}
               />
             </TiltCard>
           </TextReveal>

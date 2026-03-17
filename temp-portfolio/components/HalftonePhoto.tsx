@@ -9,6 +9,7 @@ interface HalftonePhotoProps {
   dotGap?: number
   maxDotSize?: number
   pulseInterval?: number
+  anchorY?: number
 }
 
 export default function HalftonePhoto({
@@ -18,6 +19,7 @@ export default function HalftonePhoto({
   dotGap = 4,
   maxDotSize = 1.8,
   pulseInterval = 4500,
+  anchorY = 0.5,
 }: HalftonePhotoProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -52,7 +54,7 @@ export default function HalftonePhoto({
       const imageData = offCtx.getImageData(0, 0, img.width, img.height)
 
       const offsetX = (rect.width - img.width * scale) / 2
-      const offsetY = (rect.height - img.height * scale) / 2
+      const offsetY = (rect.height - img.height * scale) * anchorY
 
       // Pre-compute ALL dot data
       const step = Math.max(1, Math.round(dotGap / scale))
@@ -135,7 +137,20 @@ export default function HalftonePhoto({
       }
       pickEdgeOrigin()
 
+      // Pause animation when not visible
+      let visible = true
+      const observer = new IntersectionObserver(
+        ([entry]) => { visible = entry.isIntersecting },
+        { threshold: 0.1 }
+      )
+      observer.observe(canvas)
+
       const draw = (time: number) => {
+        if (!visible) {
+          animId = requestAnimationFrame(draw)
+          return
+        }
+
         // Blit static frame as base
         ctx.drawImage(staticCanvas, 0, 0)
 
@@ -187,12 +202,16 @@ export default function HalftonePhoto({
       }
 
       animId = requestAnimationFrame(draw)
+
+      return () => {
+        observer.disconnect()
+      }
     }
 
     return () => {
       if (animId) cancelAnimationFrame(animId)
     }
-  }, [src, dotGap, maxDotSize, pulseInterval])
+  }, [src, dotGap, maxDotSize, pulseInterval, anchorY])
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
