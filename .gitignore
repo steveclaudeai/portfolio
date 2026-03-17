@@ -1,0 +1,13 @@
+# Capturas de pantalla sueltas en la raiz (solo en la raiz, no en subdirectorios)
+/*.png
+/*.jpeg
+/*.jpg
+
+# Carpetas de herramientas locales
+.playwright-mcp/
+.superpowers/
+docs/
+
+# Next.js build output
+temp-portfolio/.next/
+temp-portfolio/node_modules/

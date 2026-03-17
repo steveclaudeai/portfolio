@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f0d;
+  --bg2: #0c1410;
+  --emerald: #10b981;
+  --emerald-dark: #059669;
+  --text: #e8f0ec;
+  --muted: #4a6a58;
+  --dimmer: #2d4a3a;
+  --border: #1a2e24;
+}
+
+html {
+  /* scroll-behavior handled by Lenis */
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(16, 185, 129, 0.2);
+  color: #e8f0ec;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--emerald-dark); }
+
+/* Custom cursor */
+.cursor-hidden { cursor: none !important; }
+.cursor-hidden * { cursor: none !important; }
+
+/* Intro stroke animation */
+.intro-stroke {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: strokeDraw 1.5s ease forwards;
+}
+
+@keyframes strokeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
